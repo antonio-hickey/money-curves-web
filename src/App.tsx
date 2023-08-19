@@ -1,8 +1,18 @@
+import Header from './components/header.tsx';
+import ChartPanel from './components/chartPanel.tsx';
+
 function App() {
   return (
-    <h1 className="text-3xl text-red-500 font-bold underline">
-      Tailwind-ski ?
-    </h1>
+     <>
+      <div className="min-h-full bg-background-dark dark:bg-background-light">
+        <Header activeModule="Curves" chartPanel={<ChartPanel />}/>
+        <main className="-mt-32">
+          <div className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+            {<ChartPanel />}
+          </div>
+        </main>
+      </div>
+    </> 
   )
 }
 
