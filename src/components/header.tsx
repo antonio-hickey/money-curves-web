@@ -3,7 +3,7 @@ import Pattern from '/pattern.svg?url';
 export default function Header() {
   return (
     <>
-      <div className="bg-background-light dark:bg-background-dark pb-[25vh] border-b-4 border-accent-dark"
+      <div className="bg-background-dark pb-[25vh] border-b-4 border-accent-dark"
         style = {{backgroundImage: `url(${Pattern})`}}
       >
         <div>

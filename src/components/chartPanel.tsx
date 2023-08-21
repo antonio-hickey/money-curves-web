@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
+import { CurveData } from '../types';
 
 
 ChartJS.register(
@@ -24,21 +24,6 @@ ChartJS.register(
   Legend
 );
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-const data = {
-  labels,
-  datasets: [
-    {
-      fill: true,
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      borderColor: '#6ba560',
-      backgroundColor: '#a7caa080',
-    },
-  ],
-};
-
 const options = {
   responsive: true,
   plugins: {
@@ -47,7 +32,7 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'U.S Treasury Yield Curve',
     },
     customCanvasBackgroundColor: {
       color: '#172514',
@@ -55,14 +40,17 @@ const options = {
   },
 };
 
+interface ChartPanelProps {
+  chartData: CurveData
+}
 
-export default function ChartPanel() {
+export default function ChartPanel(props: ChartPanelProps) {
   return (
-    <div className="overflow-hidden rounded-lg dark:bg-background-light bg-background-dark shadow border-4 border-solid rounded-xl border-accent-light dark:border-accent-dark">
+    <div className="overflow-hidden rounded-lg bg-background-dark shadow border-4 border-solid rounded-xl border-accent-dark">
       <div className="px-4 py-5 sm:px-6">
       </div>
-      <div className="bg-background-dark dark:bg-background-light px-4 py-5 sm:p-6">
-        <Line options={options} data={data} />
+      <div className="bg-background-light px-4 sm:p-6">
+        <Line options={options} data={props.chartData} />
       </div>
     </div>
   )
