@@ -26,6 +26,7 @@ function App() {
                 ],
         borderColor: '#6ba560',
         backgroundColor: '#a7caa080',
+        borderWidth: 6
               }
             ] 
           };
@@ -40,7 +41,7 @@ function App() {
         <Header />
         <main className="-mt-32 ">
           <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8 ">
-            {data ? <ChartPanel chartData={data}/>: null}
+            {<ChartPanel chartData={data ? data : null}/>}
           </div>
         </main>
       </div>
