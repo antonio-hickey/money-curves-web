@@ -5,9 +5,12 @@ import { CurveData } from './types.ts';
 
 
 function App() {
+  const [width, setWidth] = useState<number>(window.innerWidth);
   const [data, setData] = useState<CurveData>();
 
   useEffect(() => {
+    setWidth(window.innerWidth);
+    console.log(width)
     if (!data) {
       fetch('https://tx5dqdiyy3.execute-api.us-east-1.amazonaws.com/dev/fetch-curve')
         .then(resp => resp.json())
@@ -38,7 +41,7 @@ function App() {
   return (
      <>
       <div className="min-h-screen bg-background-light">
-        <Header />
+        <Header isMobile={width <= 800 ? true : false}/>
         <main className="-mt-32 ">
           <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8 ">
             {<ChartPanel chartData={data ? data : null}/>}

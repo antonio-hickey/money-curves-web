@@ -1,10 +1,15 @@
-import Pattern from '/pattern.svg?url';
+import Pattern from '/pattern-desktop.svg?url';
+import MobilePattern from '/pattern-mobile.svg?url'
 
-export default function Header() {
+type HeaderProps = {
+  isMobile: boolean
+}
+
+export default function Header(props: HeaderProps) {
   return (
     <>
       <div className="bg-background-dark pb-[25vh] border-b-4 border-accent-dark"
-        style = {{backgroundImage: `url(${Pattern})`}}
+        style = {{backgroundImage: `url(${props.isMobile ? MobilePattern : Pattern})`}}
       >
         <div>
           <div className="flex w-full flex-col items-center justify-center p-4">
