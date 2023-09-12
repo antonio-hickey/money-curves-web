@@ -11,8 +11,9 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { CurveData } from '../types';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { pandemicUSTCurves } from '../data';
+import DatePicker from './datePicker';
 
 
 ChartJS.register(
@@ -71,6 +72,7 @@ function updateLoaderCurve(idx: number) {
 
 interface ChartPanelProps {
   chartData: CurveData | null
+  setData: Dispatch<SetStateAction<CurveData | undefined>>
 }
 
 export default function ChartPanel(props: ChartPanelProps) {
@@ -95,6 +97,7 @@ export default function ChartPanel(props: ChartPanelProps) {
   return (
     <div className="overflow-hidden rounded-lg bg-background-dark shadow border-4 border-solid rounded-xl border-accent-dark">
       <div className="px-4 py-[1.67rem] sm:px-6 flex flex-row">
+        <DatePicker setData={props.setData}/>
       </div>
       <div className="bg-background-light px-4 sm:p-6 border-t-4 border-accent-dark h-[50vh]">
         <Line options={options} data={data}/>
